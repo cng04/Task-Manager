@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.example.todojava.database.TasksRepository;
 import com.example.todojava.database.entity.Task;
 
+import ch.qos.logback.core.rolling.helper.IntegerTokenConverter;
 import lombok.extern.slf4j.Slf4j;
 
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -31,14 +32,15 @@ public class todoAPI {
     private TasksRepository tasksRepository;
 
     // Get APIs
+    // Finds all Tasks and sorts them in ascending order based on priority
     @GetMapping("/Tasks")
     public List<Task> getTasks() {
-        return tasksRepository.findAll();
+        return tasksRepository.findAllByOrderByPriorityAsc();
     }
 
-    @GetMapping("/Tasks/{id}")
-    public Task getTaskbyId(@RequestParam String id) {
-        Optional<Task> task = tasksRepository.findById(Long.valueOf(id));
+    @GetMapping("/Tasks/{priority}")
+    public Task getTaskbyPriority(@PathVariable String priority) {
+        Optional<Task> task = tasksRepository.findByPriority(Integer.valueOf(priority));
 
         if (task.isPresent()) {
             return task.get();
