@@ -1,0 +1,50 @@
+
+<div *ngIf="tasks">
+    <table>
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Priority</th>
+          <th>Title</th>
+          <th>Category</th>
+          <th>Description</th>
+          <th>Date</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let task of tasks">
+          <td>{{ task.id }}</td>
+          <td>{{ task.priority }}</td>
+          <td>{{ task.title }}</td>
+          <td>{{ task.category }}</td>
+          <td>{{ task.description }}</td>
+          <td>{{ task.date }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+<!-- 
+<div *ngIf="tasks">
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Priority</th>
+                <th>Title</th>
+                <th>Category</th>
+                <th>Description</th>
+                <th>Date</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let task of tasks">
+                <td>{{ task.id }} </td>
+                <td>{{ task.priority }}</td>
+                <td>{{ task.title }}</td>
+                <td>{{ task.category }}</td>
+                <td>{{ task.description }}</td>
+                <td>{{ task.date }}</td>
+            </tr>
+        </tbody>
+    </table>
+</div> -->

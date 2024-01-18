@@ -56,7 +56,7 @@ public class todoAPI {
     }
 
     // Delete APIs
-    @DeleteMapping("/deleteAll")
+    @DeleteMapping("/delete")
     public String deleteAllTasks() {
         tasksRepository.deleteAll();
 

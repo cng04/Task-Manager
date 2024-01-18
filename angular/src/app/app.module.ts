@@ -1,18 +1,25 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { ReactiveFormsModule } from '@angular/forms';
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { ReactiveFormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
+import { ToDoListComponent } from './view/to-do-list/to-do-list.component';
+import { ToDoFormComponent } from './view/to-do-form/to-do-form.component';
+import { HomeComponent } from './view/home/home.component'
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    ToDoListComponent,
+    ToDoFormComponent,
+    HomeComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
