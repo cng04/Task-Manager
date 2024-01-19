@@ -57,6 +57,7 @@ export class ToDoFormComponent implements OnInit {
     }
   }
 
+  // Saving a new task or editing a task
   saveTask(): void {
     // If we are editing, call the editTask method which calls the PUT API
     if (this.submitted) {
@@ -73,8 +74,13 @@ export class ToDoFormComponent implements OnInit {
     }
   }
 
+  // On submit of the form
   onSubmit(): void {
     this.task = this.taskForm.value;
     this.saveTask();
+  }
+
+  get form() {
+    return this.taskForm.controls;
   }
 }
