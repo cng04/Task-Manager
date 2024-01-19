@@ -23,7 +23,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.PutMapping;
 
 
-
+// Allows sharing of resources with the specified origins
 @CrossOrigin(origins = "http://localhost:4200")
 @RestController
 @Slf4j
@@ -39,9 +39,10 @@ public class todoAPI {
         return tasksRepository.findAllByOrderByPriorityAsc();
     }
 
-    @GetMapping("/Tasks/{priority}")
-    public Task getTaskbyPriority(@PathVariable String priority) {
-        Optional<Task> task = tasksRepository.findByPriority(Integer.valueOf(priority));
+    // Gets a specific task by id
+    @GetMapping("/Tasks/{id}")
+    public Task getTaskbyPriority(@PathVariable String id) {
+        Optional<Task> task = tasksRepository.findById(Long.valueOf(id));
 
         if (task.isPresent()) {
             return task.get();
@@ -51,23 +52,44 @@ public class todoAPI {
     }
 
     // Post APIs
-    @PostMapping("/addTask")
+    // Adds a task
+    @PostMapping("/Tasks")
     public Task addTask(@RequestBody Task task) {
         return tasksRepository.saveAndFlush(task);
     }
 
+    // Put API
+    // Edits a task
+    @PutMapping("Tasks/{id}")
+    public Task editTask(@PathVariable String id, @RequestBody Task newTask) {
+        Optional<Task> tsk = tasksRepository.findById(Long.valueOf(id));
+        Task task = tsk.get();
+
+        if (tsk.isPresent()) {
+            task.setPriority(newTask.getPriority());
+            task.setTitle(newTask.getTitle());
+            task.setCategory(newTask.getCategory());
+            task.setDescription(newTask.getDescription());
+            task.setDate(newTask.getDate());
+            return tasksRepository.save(task);
+        } else {
+            return tasksRepository.saveAndFlush(newTask);
+        }
+        
+    }
+
     // Delete APIs
-    @DeleteMapping("/delete")
+    // Deletes all tasks
+    @DeleteMapping("/Tasks")
     public String deleteAllTasks() {
         tasksRepository.deleteAll();
 
         return "All Tasks Deleted";
     }
 
-    @DeleteMapping("/delete/{id}")
-    public String deleteTask(@PathVariable String id) {
+    // Deletes a specific task
+    @DeleteMapping("/Tasks/{id}")
+    public void deleteTask(@PathVariable String id) {
         tasksRepository.deleteById(Long.valueOf(id));
-
-        return "All Tasks Deleted";
     }
 }

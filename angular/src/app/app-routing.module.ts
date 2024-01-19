@@ -5,10 +5,9 @@ import { ToDoFormComponent } from './view/to-do-form/to-do-form.component';
 import { HomeComponent } from './view/home/home.component';
 
 const routes: Routes = [
-  {path: "home", component: HomeComponent},
   {path: "toDoList", component: ToDoListComponent},
   {path: "toDoForm", component: ToDoFormComponent},
-  {path: '', redirectTo: "home", pathMatch: "full"}
+  {path: '', redirectTo: "toDoList", pathMatch: "full"}
 ];
 
 @NgModule({
