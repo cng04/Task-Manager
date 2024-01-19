@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Task } from 'src/app/model/task';
 import { ToDoService } from 'src/app/services/to-do.service';
+import { ToDoFormComponent } from '../to-do-form/to-do-form.component';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-to-do-list',
@@ -9,7 +11,7 @@ import { ToDoService } from 'src/app/services/to-do.service';
 })
 export class ToDoListComponent implements OnInit {
   tasks: Task[]
-  constructor(private toDoService: ToDoService) {}
+  constructor(private toDoService: ToDoService, private router: Router) {}
 
   ngOnInit(): void {
     this.displayTasks();
@@ -23,6 +25,7 @@ export class ToDoListComponent implements OnInit {
   }
 
   // Delete all Tasks
+  // Place this.displayTasks() in the subcribe function scope to get the page to display changes right away
   deleteAllTasks(): void {
     this.toDoService.deleteAllTasks().subscribe(data => {
       this.displayTasks();
@@ -34,5 +37,10 @@ export class ToDoListComponent implements OnInit {
     this.toDoService.deleteTask(id).subscribe(data => {
       this.displayTasks();
     })
+  }
+
+  // Editing a task, redirects to toDoForm with a parameter passed in denoting which task is being editied
+  editTask(id: string): void {
+    this.router.navigate(["/toDoForm", id]);
   }
 }

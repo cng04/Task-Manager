@@ -7,6 +7,7 @@ import { HomeComponent } from './view/home/home.component';
 const routes: Routes = [
   {path: "toDoList", component: ToDoListComponent},
   {path: "toDoForm", component: ToDoFormComponent},
+  {path: "toDoForm/:id", component: ToDoFormComponent},
   {path: '', redirectTo: "toDoList", pathMatch: "full"}
 ];
 

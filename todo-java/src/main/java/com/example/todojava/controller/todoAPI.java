@@ -39,9 +39,10 @@ public class todoAPI {
         return tasksRepository.findAllByOrderByPriorityAsc();
     }
 
+
     // Gets a specific task by id
     @GetMapping("/Tasks/{id}")
-    public Task getTaskbyPriority(@PathVariable String id) {
+    public Task getTaskById(@PathVariable String id) {
         Optional<Task> task = tasksRepository.findById(Long.valueOf(id));
 
         if (task.isPresent()) {
@@ -81,10 +82,8 @@ public class todoAPI {
     // Delete APIs
     // Deletes all tasks
     @DeleteMapping("/Tasks")
-    public String deleteAllTasks() {
+    public void deleteAllTasks() {
         tasksRepository.deleteAll();
-
-        return "All Tasks Deleted";
     }
 
     // Deletes a specific task

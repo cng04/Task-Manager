@@ -6,7 +6,8 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { ToDoListComponent } from './view/to-do-list/to-do-list.component';
 import { ToDoFormComponent } from './view/to-do-form/to-do-form.component';
-import { HomeComponent } from './view/home/home.component'
+import { HomeComponent } from './view/home/home.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import { HomeComponent } from './view/home/home.component'
     BrowserModule,
     AppRoutingModule,
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
+    BrowserAnimationsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

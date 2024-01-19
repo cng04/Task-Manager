@@ -7,7 +7,7 @@ import java.util.Optional;
 
 
 public interface TasksRepository extends JpaRepository<Task, Long> {
-    Optional<Task> findByPriority(int priority);
+   //Optional<Task> findByPriority(int priority);
 
     List<Task> findAllByOrderByPriorityAsc();
 }

@@ -16,9 +16,18 @@ export class ToDoService {
     return this.http.get<Task[]>(this.apiUrl);
   }
 
+  getTask(id : string): Observable<Task> {
+    return this.http.get<Task>(this.apiUrl + "/" + id);
+  }
+
   // Calls POST API
   addTask(task: Task): Observable<Task> {
     return this.http.post<Task>(this.apiUrl, task);
+  }
+
+  // Calls Put API
+  editTask(id: string, task: Task): Observable<Task> {
+    return this.http.put<Task>(this.apiUrl + "/" + id, task);
   }
 
   // Calls DELETE API

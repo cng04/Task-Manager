@@ -26,7 +26,7 @@ public class Task {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     Long id;
-    int priority;
+    String priority;
     String title;
     String category;
     String description;

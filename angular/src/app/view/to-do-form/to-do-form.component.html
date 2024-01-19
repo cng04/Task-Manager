@@ -1,1 +1,25 @@
-<div>HELOOOOOO</div>
+<h1>Please enter a task below:</h1>
+
+<form *ngIf = "!edit" [formGroup]="taskForm" (ngSubmit)="onSubmit()">
+    <label for="priority" class="form-label"> Priority: </label>
+        <input type="text" formControlName="priority" class="form-control" placeholder="Please enter the priority"><br><br>
+    <label for="title" class="form-label"> Title: </label>
+    <input type="text" formControlName="title" class="form-control" placeholder="Please enter the title"><br><br>
+    <label for="category" class="form-label"> Category: </label>
+    <input type="text" formControlName="category" class="form-control" placeholder="Please enter the category"><br><br>
+    <label for="description" class="form-label"> Description: </label>
+    <input type="text" formControlName="description" class="form-control" placeholder="Please enter the description"><br><br>
+    <label for="date" class="form-label"> Date: </label>
+    <input type="text" formControlName="date" class="form-control" placeholder="Please enter the date"><br><br>
+    <div *ngIf="!submitted">
+        <button [disabled]="taskForm.invalid" type="submit"> Create </button>
+    </div>
+    <div *ngIf="submitted">
+        <button [disabled]="taskForm.invalid" type="submit"> Save </button>
+    </div>
+    <button routerLink="/toDoList"> Cancel </button>
+</form>
+
+<div *ngIf="edit">
+    <span></span>
+</div>
