@@ -4,9 +4,7 @@
   <!-- <li>
       <a routerlink="/toDoList">List Tasks to Do</a>
   </li> -->
-  <li>
-      <a routerLink="/toDoForm">Add Tasks to Do</a>
-  </li>
+  <button mat-raised-button routerLink="/toDoForm">Add Tasks to Do</button><br><br>
 </div>
 
 <div *ngIf="tasks">
@@ -27,13 +25,13 @@
           <td>{{ task.category }}</td>
           <td>{{ task.description }}</td>
           <td>{{ task.date }}</td>
-          <td><button type="button" (click)="editTask(task.id)"> Edit </button></td>
-          <td><button type="button" (click)="deleteTask(task.id)"> Delete </button></td>
+          <td><button mat-raised-button color="primary" type="button" (click)="editTask(task.id)"> Edit </button></td>
+          <td><button mat-raised-button color="warn" type="button" (click)="deleteTask(task.id)"> Done Task! </button></td>
         </tr>
       </tbody>
     </table>
   </div>
-  <button type="button" (click)="deleteAllTasks()"> Clear </button>
+  <button mat-flat-button type="button" (click)="deleteAllTasks()"> Clear </button>
 <!-- 
 <div *ngIf="tasks">
     <table>

@@ -3,6 +3,8 @@
 <form *ngIf = "!edit" [formGroup]="taskForm" (ngSubmit)="onSubmit()">
     <label for="priority" class="form-label"> Priority: </label>
         <input type="text" formControlName="priority" class="form-control" placeholder="Please enter the priority"><br><br>
+        <!-- <div *ngIf="taskForm.priority.errors?.['required']"> Please enter a number. </div> -->
+        <!-- <p *ngIf="priority.errors.pattern"> Number Only </p> -->
     <label for="title" class="form-label"> Title: </label>
     <input type="text" formControlName="title" class="form-control" placeholder="Please enter the title"><br><br>
     <label for="category" class="form-label"> Category: </label>
@@ -12,12 +14,12 @@
     <label for="date" class="form-label"> Date: </label>
     <input type="text" formControlName="date" class="form-control" placeholder="Please enter the date"><br><br>
     <div *ngIf="!submitted">
-        <button [disabled]="taskForm.invalid" type="submit"> Create </button>
+        <button mat-raised-button [disabled]="taskForm.invalid" type="submit"> Create </button>
     </div>
     <div *ngIf="submitted">
-        <button [disabled]="taskForm.invalid" type="submit"> Save </button>
+        <button mat-raised-button [disabled]="taskForm.invalid" type="submit"> Save </button>
     </div>
-    <button routerLink="/toDoList"> Cancel </button>
+    <br><button mat-raised-button routerLink="/toDoList"> Cancel </button>
 </form>
 
 <div *ngIf="edit">

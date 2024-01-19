@@ -12,10 +12,10 @@ import { first } from 'rxjs';
 })
 export class ToDoFormComponent implements OnInit {
   taskForm: FormGroup = this.fb.group({
-    priority: new FormControl('', Validators.required),
+    priority: new FormControl('', [Validators.required, Validators.pattern("^[0-9]*$")]),
     title: new FormControl('', Validators.required),
-    category: new FormControl('', Validators.required),
-    description: new FormControl('', Validators.required),
+    category: new FormControl(''),
+    description: new FormControl(''),
     date: new FormControl('', Validators.required)
   });
 

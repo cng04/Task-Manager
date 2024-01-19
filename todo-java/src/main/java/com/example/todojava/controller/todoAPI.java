@@ -39,6 +39,16 @@ public class todoAPI {
         return tasksRepository.findAllByOrderByPriorityAsc();
     }
 
+    // Reorders priority of tasks
+    public void reOrderPriority() {
+        long count = 1;
+
+        for (Task task : tasksRepository.findAll()) {
+            task.setPriority(Long.toString(count));
+            count++;
+        }
+
+    }
 
     // Gets a specific task by id
     @GetMapping("/Tasks/{id}")

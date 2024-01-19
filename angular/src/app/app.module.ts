@@ -8,6 +8,7 @@ import { ToDoListComponent } from './view/to-do-list/to-do-list.component';
 import { ToDoFormComponent } from './view/to-do-form/to-do-form.component';
 import { HomeComponent } from './view/home/home.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
+import { CustomMaterialModule } from './custom-material.module';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
     AppRoutingModule,
     ReactiveFormsModule,
     HttpClientModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    CustomMaterialModule
   ],
   providers: [],
   bootstrap: [AppComponent]
