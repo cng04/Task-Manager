@@ -52,8 +52,8 @@ export class ToDoFormComponent implements OnInit {
 
       // calls the getTask() method in todoServce, subscribes to the first emitted value, then uses patchValue with the emitted value to update form controls with existing value
       this.todoService.getTask(this.ID).pipe(first()).subscribe(data => {
+        console.log(this.taskForm);
         this.taskForm.patchValue(data);
-        console.log(this.taskForm.value)
         //this.edit = false;
       })
     }

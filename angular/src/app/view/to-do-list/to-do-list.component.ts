@@ -14,6 +14,7 @@ export class ToDoListComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    // Displays tasks and reorders the priority
     this.displayTasks();
   }
 

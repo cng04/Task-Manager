@@ -16,6 +16,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -36,16 +37,17 @@ public class todoAPI {
     // Finds all Tasks and sorts them in ascending order based on priority
     @GetMapping("/Tasks")
     public List<Task> getTasks() {
-        reOrderPriority();
+        // reOrderPriority();
         return tasksRepository.findAllByOrderByPriorityAsc();
     }
 
+    // Spring will call methods marked with this annotation before any request handler
+    @ModelAttribute
     // Reorders priority of tasks
     public void reOrderPriority() {
         long count = 1;
 
         for (Task task : tasksRepository.findAll()) {
-            //log.info(task.getPriority());
             task.setPriority(Long.toString(count));
             count++;
         }
@@ -55,6 +57,7 @@ public class todoAPI {
     // Gets a specific task by id
     @GetMapping("/Tasks/{id}")
     public Task getTaskById(@PathVariable String id) {
+        // reOrderPriority();
         Optional<Task> task = tasksRepository.findById(Long.valueOf(id));
 
         if (task.isPresent()) {

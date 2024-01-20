@@ -1,59 +1,40 @@
 
 <div class="container">
-  <h2>To Do Manager</h2>
-  <!-- <li>
-      <a routerlink="/toDoList">List Tasks to Do</a>
-  </li> -->
-  <button mat-raised-button routerLink="/toDoForm">Add Tasks to Do</button><br><br>
-</div>
-
-<div *ngIf="tasks">
-    <table>
+  <header class="title">
+    <h1 class="title-text">To Do Manager</h1>
+  </header>
+  <div class="buttons">
+    <div class="add-button">
+      <button mat-raised-button routerLink="/toDoForm">Add Tasks to Do</button><br><br>
+    </div>
+    <div class="clear-button">
+      <button mat-flat-button type="button" (click)="deleteAllTasks()"> Clear </button>
+    </div>
+  </div>
+  <div class="tasks" *ngIf="tasks">
+    <table class="tasks-table">
       <thead>
         <tr>
-          <th>Priority</th>
-          <th>Title</th>
-          <th>Category</th>
-          <th>Description</th>
-          <th>Date</th>
+          <th class="task-property">Priority</th>
+          <th class="task-property">Title</th>
+          <th class="task-property">Category</th>
+          <th class="task-property">Description</th>
+          <th class="task-property">Date</th>
         </tr>
       </thead>
       <tbody>
         <tr *ngFor="let task of tasks">
-          <td>{{ task.priority }}</td>
-          <td>{{ task.title }}</td>
-          <td>{{ task.category }}</td>
-          <td>{{ task.description }}</td>
-          <td>{{ task.date | date: "yyyy-MM-dd"}}</td>
-          <td><button mat-raised-button color="primary" type="button" (click)="editTask(task.id)"> Edit </button></td>
-          <td><button mat-raised-button color="warn" type="button" (click)="deleteTask(task.id)"> Done Task! </button></td>
+          <td class="task-details">{{ task.priority }}</td>
+          <td class="task-details">{{ task.title }}</td>
+          <td class="task-details">{{ task.category }}</td>
+          <td class="task-details">{{ task.description }}</td>
+          <td class="task-details">{{ task.date | date: "yyyy-MM-dd"}}</td>
+          <td><button class="edit-button" mat-raised-button color="primary" type="button" (click)="editTask(task.id)"> Edit </button></td>
+          <td><button class="done-button" mat-raised-button color="warn" type="button" (click)="deleteTask(task.id)"> Done Task! </button></td>
         </tr>
       </tbody>
     </table>
   </div>
-  <button mat-flat-button type="button" (click)="deleteAllTasks()"> Clear </button>
-<!-- 
-<div *ngIf="tasks">
-    <table>
-        <thead>
-            <tr>
-                <th>ID</th>
-                <th>Priority</th>
-                <th>Title</th>
-                <th>Category</th>
-                <th>Description</th>
-                <th>Date</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr *ngFor="let task of tasks">
-                <td>{{ task.id }} </td>
-                <td>{{ task.priority }}</td>
-                <td>{{ task.title }}</td>
-                <td>{{ task.category }}</td>
-                <td>{{ task.description }}</td>
-                <td>{{ task.date }}</td>
-            </tr>
-        </tbody>
-    </table>
-</div> -->
+</div>
+
+
