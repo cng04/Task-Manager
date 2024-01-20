@@ -36,6 +36,7 @@ public class todoAPI {
     // Finds all Tasks and sorts them in ascending order based on priority
     @GetMapping("/Tasks")
     public List<Task> getTasks() {
+        reOrderPriority();
         return tasksRepository.findAllByOrderByPriorityAsc();
     }
 
@@ -44,6 +45,7 @@ public class todoAPI {
         long count = 1;
 
         for (Task task : tasksRepository.findAll()) {
+            //log.info(task.getPriority());
             task.setPriority(Long.toString(count));
             count++;
         }
