@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -9,6 +9,7 @@ import { ToDoFormComponent } from './view/to-do-form/to-do-form.component';
 import { HomeComponent } from './view/home/home.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
 import { CustomMaterialModule } from './custom-material.module';
+import { ToDoService } from './services/to-do.service';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,8 @@ import { CustomMaterialModule } from './custom-material.module';
     BrowserAnimationsModule,
     CustomMaterialModule
   ],
-  providers: [],
-  bootstrap: [AppComponent]
+  providers: [ToDoService],
+  bootstrap: [AppComponent],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
 export class AppModule { }

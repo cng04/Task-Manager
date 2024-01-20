@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Task } from 'src/app/model/task';
 import { ToDoService } from 'src/app/services/to-do.service';
-import { ToDoFormComponent } from '../to-do-form/to-do-form.component';
 import { Router } from '@angular/router';
 
 @Component({
@@ -11,7 +10,8 @@ import { Router } from '@angular/router';
 })
 export class ToDoListComponent implements OnInit {
   tasks: Task[]
-  constructor(private toDoService: ToDoService, private router: Router) {}
+  constructor(private toDoService: ToDoService, private router: Router) {
+  }
 
   ngOnInit(): void {
     this.displayTasks();

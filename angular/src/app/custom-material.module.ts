@@ -11,6 +11,8 @@ import { MatMenu, MatMenuModule } from "@angular/material/menu";
 import { MatTableModule } from '@angular/material/table';
 import { MatListModule } from '@angular/material/list';
 import { MatIconModule } from '@angular/material/icon';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatNativeDateModule } from '@angular/material/core';
 
 // Importing allows the components of these modules to be used by the custom-material module
 @NgModule({
@@ -24,6 +26,8 @@ import { MatIconModule } from '@angular/material/icon';
         MatTableModule,
         MatListModule,
         MatIconModule,
+        MatDatepickerModule,
+        MatNativeDateModule
     ],
 
 // Exporting dictates which modules will be exported from the custom-material module
@@ -38,6 +42,7 @@ import { MatIconModule } from '@angular/material/icon';
         MatTableModule,
         MatListModule,
         MatIconModule,
+        MatDatepickerModule
     ],
 })
 

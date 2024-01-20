@@ -5,6 +5,7 @@ import { ToDoService } from 'src/app/services/to-do.service';
 import { Router, ActivatedRoute } from '@angular/router';
 import { first } from 'rxjs';
 
+
 @Component({
   selector: 'app-to-do-form',
   templateUrl: './to-do-form.component.html',
@@ -23,8 +24,9 @@ export class ToDoFormComponent implements OnInit {
   ID : string;
 
   // Boolean to toggle editing mode on and off
-  edit = false;
+  // edit = false;
 
+  // Checking if the form has been submitted before (so if we are in edit mode or not)
   submitted = false;
 
   task: Task = {
@@ -36,23 +38,23 @@ export class ToDoFormComponent implements OnInit {
     date: ""
   }
 
-  constructor(private todoService: ToDoService, private fb: FormBuilder, private router: Router, private route: ActivatedRoute) {}
+  constructor(private todoService: ToDoService, private fb: FormBuilder, private router: Router, private route: ActivatedRoute) {
+  }
 
   ngOnInit(): void {
     // Gets the id in the URL
     this.ID = this.route.snapshot.params["id"];
 
-    console.log(this.ID);
-
     // If there's an id in the URL, we are editing the task not adding it
     if (this.ID) {
       this.submitted = true;
-      this.edit = true;
+      //this.edit = true;
 
       // calls the getTask() method in todoServce, subscribes to the first emitted value, then uses patchValue with the emitted value to update form controls with existing value
       this.todoService.getTask(this.ID).pipe(first()).subscribe(data => {
         this.taskForm.patchValue(data);
-        this.edit = false;
+        console.log(this.taskForm.value)
+        //this.edit = false;
       })
     }
   }
@@ -76,10 +78,12 @@ export class ToDoFormComponent implements OnInit {
 
   // On submit of the form
   onSubmit(): void {
+    // Fields of task are populated with formControl Values
     this.task = this.taskForm.value;
     this.saveTask();
   }
 
+  // Note for Caleb: Read Angular Documentation on this and why in the html we can access the priority formControl with: form['priority']
   get form() {
     return this.taskForm.controls;
   }

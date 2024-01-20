@@ -24,7 +24,7 @@
           <td>{{ task.title }}</td>
           <td>{{ task.category }}</td>
           <td>{{ task.description }}</td>
-          <td>{{ task.date }}</td>
+          <td>{{ task.date | date: "yyyy-MM-dd"}}</td>
           <td><button mat-raised-button color="primary" type="button" (click)="editTask(task.id)"> Edit </button></td>
           <td><button mat-raised-button color="warn" type="button" (click)="deleteTask(task.id)"> Done Task! </button></td>
         </tr>
