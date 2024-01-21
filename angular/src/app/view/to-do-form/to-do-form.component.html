@@ -1,41 +1,83 @@
-<h1>Please enter a task below:</h1>
+<div class="title-container">
+    <header class="title-header">
+        <h1 class="title-text">Enter tasks below:</h1>
+    </header>
+    <div>
+        <form class="form-container" [formGroup]="taskForm" (ngSubmit)="onSubmit()">
+            <!-- <div class="error-message-container">
+                <div class="error-message" *ngIf="form['priority'].errors?.['required']"> Please enter the priority of your task. It must be a number:</div>
+            </div> -->
+            <div class="form-field">
+                <label for="priority" class="form-label"> Priority: </label>
+                <input type="text" formControlName="priority" class="form-control" placeholder="Please enter the priority"><br>
+                <div class="error-message" *ngIf="form['priority'].errors?.['required']">*</div>
+            </div>
+            
+            <!-- <div class="error-message-container">
+                <div class="error-message" *ngIf="form['title'].errors?.['required']"> Please enter a title for your task:</div>
+            </div> -->
 
-<form [formGroup]="taskForm" (ngSubmit)="onSubmit()">
-    <label for="priority" class="form-label"> Priority: </label>
-        <input type="text" formControlName="priority" class="form-control" placeholder="Please enter the priority"><br>
-        <div *ngIf="form['priority'].errors?.['required']"> Please enter the priority of your task. Must be a number </div><br>
+            <div class="form-field">
+                <label for="title" class="form-label"> Title: </label>
+                <input type="text" formControlName="title" class="form-control" placeholder="Please enter the title"><br>
+                <div class="error-message" *ngIf="form['title'].errors?.['required']">*</div>
+            </div>
+        
+            <div class="form-field">
+                <label for="category" class="form-label"> Category: </label>
+                <input type="text" id="category" formControlName="category" class="form-control" placeholder="Please enter the category"><br>
+            </div>
+        
+            <div class="form-field">
+                <label for="description" class="form-label"> Description: </label>
+                <input type="text" id="description" formControlName="description" class="form-control" placeholder="Please enter the description"><br>
+            </div>
+        
 
-    <label for="title" class="form-label"> Title: </label>
-        <input type="text" formControlName="title" class="form-control" placeholder="Please enter the title"><br>
-        <div *ngIf="form['title'].errors?.['required']"> Please enter a title for your task.</div><br>
+            <!-- <div class="error-message-container">
+                <div class="error-message" *ngIf="form['date'].errors?.['required']"> Please enter a date of completion for your task:</div>
+            </div> -->
 
-    <label for="category" class="form-label"> Category: </label>
-        <input type="text" formControlName="category" class="form-control" placeholder="Please enter the category"><br><br>
+            <div class="form-field"> 
+                <label> Date: </label>
+                <div class="date-container">
+                    <mat-form-field class="example-full-width" appearance="fill">
+                        <input matInput [matDatepicker]="picker" formControlName="date" class="form-control" placeholder="Please select a date">
+                        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                        <mat-datepicker #picker></mat-datepicker>
+                    </mat-form-field>
+                </div>
+                <div class="error-message" *ngIf="form['date'].errors?.['required']">*</div>
 
-    <label for="description" class="form-label"> Description: </label>
-        <input type="text" formControlName="description" class="form-control" placeholder="Please enter the description"><br><br>
-
-    <mat-form-field class="example-full-width" appearance="fill">
-        <input matInput [matDatepicker]="picker" formControlName="date" class="form-control" placeholder="Please select a date">
-        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-        <mat-datepicker #picker></mat-datepicker>
-    </mat-form-field>
-          
-
-    <!-- <label for="date" class="form-label"> Date: </label>
-        <input type="text" formControlName="date" class="form-control" placeholder="Please enter the date"><br>
-        <div *ngIf="form['date'].errors?.['required']"> Please enter the date you want to complete your task by.</div><br> -->
-
-    <div *ngIf="!submitted">
-        <button mat-raised-button [disabled]="taskForm.invalid" type="submit"> Create </button>
+            </div>
+                  
+        
+            <!-- <label for="date" class="form-label"> Date: </label>
+                <input type="text" formControlName="date" class="form-control" placeholder="Please enter the date"><br>
+                <div *ngIf="form['date'].errors?.['required']"> Please enter the date you want to complete your task by.</div><br> -->
+                
+            <div class="button-container">
+                <div class="buttons">
+                    <div class="save-button">
+                        <div *ngIf="!submitted">
+                            <button mat-raised-button [disabled]="taskForm.invalid" type="submit"> Create </button>
+                        </div>
+                        
+                        <div *ngIf="submitted">
+                            <button mat-raised-button [disabled]="taskForm.invalid" type="submit"> Save </button>
+                        </div>
+                        
+                    </div>
+                    <div class="cancel-button">
+                        <button mat-raised-button routerLink="/toDoList"> Cancel </button>
+                    </div>
+                </div>
+            </div>
+        </form>
     </div>
+</div>
 
-    <div *ngIf="submitted">
-        <button mat-raised-button [disabled]="taskForm.invalid" type="submit"> Save </button>
-    </div>
 
-    <br><button mat-raised-button routerLink="/toDoList"> Cancel </button>
-</form>
 
 <!-- <div *ngIf="edit">
     <span></span>
