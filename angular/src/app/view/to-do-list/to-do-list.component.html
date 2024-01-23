@@ -25,9 +25,9 @@
       <tbody>
         <tr *ngFor="let task of tasks">
           <td class="task-details">{{ task.priority }}</td>
-          <td class="task-details">{{ task.title }}</td>
-          <td class="task-details">{{ task.category }}</td>
-          <td class="task-details">{{ task.description }}</td>
+          <td id="wrap-text" class="task-details">{{ task.title }}</td>
+          <td id="wrap-text" class="task-details">{{ task.category }}</td>
+          <td id="wrap-text" class="task-details">{{ task.description }}</td>
           <td class="task-details">{{ task.date | date: "yyyy-MM-dd"}}</td>
           <td><button class="edit-button" mat-raised-button color="primary" type="button" (click)="editTask(task.id)"> Edit </button></td>
           <td><button class="done-button" mat-raised-button color="warn" type="button" (click)="deleteTask(task.id)"> Done Task! </button></td>
