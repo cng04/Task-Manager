@@ -1,1 +1,1 @@
-# Task Manager built in Angular and Java Spring Boot
+# Task Manager Application built in Angular and Java Spring Boot
